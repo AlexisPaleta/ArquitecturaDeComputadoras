@@ -1,0 +1,7 @@
+Running: xsim.dir/UnionMDE_behav/xsimk.exe -simmode gui -wdb UnionMDE_behav.wdb -simrunnum 0 -socket 55113
+Design successfully loaded
+Design Loading Memory Usage: 8464 KB (Peak: 8464 KB)
+Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 8992 KB (Peak: 8992 KB)
+Simulation CPU Usage: 46 ms
