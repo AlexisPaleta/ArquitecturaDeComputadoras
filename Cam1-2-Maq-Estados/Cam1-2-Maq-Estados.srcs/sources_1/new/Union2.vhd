@@ -32,8 +32,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity Union2 is
-    Port ( clk_RAM : in STD_LOGIC;
-           clk_RegALU : in STD_LOGIC;
+    Port ( clk : in STD_LOGIC;
+           reset : in STD_LOGIC;
+           clk_pc : out STD_LOGIC; --Tengo que tener estas dos salidas, que son de la maquina de estados, para poder 
+           --comunicarme con el camino 1, y asi indicar a PC y a la memoria de instrucciones cuando se deben activar
+           clk_MemInstrucciones : out STD_LOGIC;
            instruccion : in STD_LOGIC_VECTOR (31 downto 0));
 end Union2;
 
@@ -55,7 +58,7 @@ architecture Behavioral of Union2 is
            addr2 : in STD_LOGIC_VECTOR (4 downto 0);
            addr3 : in STD_LOGIC_VECTOR (4 downto 0);
            resultadoOP : in STD_LOGIC_VECTOR (4 downto 0);
-           Escribir : in STD_LOGIC;
+           Escribir : in STD_LOGIC; --El modo de escritura se va a efectuar solo cuando sepa que el registro de la Alu tiene un valor
            valor1 : out STD_LOGIC_VECTOR (4 downto 0);
            valor2 : out STD_LOGIC_VECTOR (4 downto 0));
     end component;
@@ -79,6 +82,17 @@ architecture Behavioral of Union2 is
            valor_salida : out STD_LOGIC_VECTOR (4 downto 0));
     end component;
     
+    component MDE
+        Port ( clk : in STD_LOGIC;
+           edo_1 : out STD_LOGIC;
+           edo_2 : out STD_LOGIC;
+           edo_3 : out STD_LOGIC;
+           edo_4 : out STD_LOGIC;
+           op : in STD_LOGIC_VECTOR (5 downto 0);
+           Aluop : out STD_LOGIC_VECTOR (1 downto 0);
+           reset : in STD_LOGIC);
+    end component;
+    
     signal cop: std_logic_vector (5 downto  0);
     signal reg1: std_logic_vector (4 downto 0);
     signal reg2: std_logic_vector (4 downto 0);
@@ -89,8 +103,10 @@ architecture Behavioral of Union2 is
     signal valorALU: std_logic_vector (4 downto 0);
     signal val1: std_logic_vector (4 downto 0);
     signal val2: std_logic_vector (4 downto 0);
-    signal Alu_op: std_logic_vector (1 downto 0) := "11";
+    signal Alu_op: std_logic_vector (1 downto 0);
     signal operacion_out: std_logic_vector (2 downto 0);
+    
+    signal E3,E4: std_logic;
 begin
 
    Decodificador: DecodificadorInstrucciones
@@ -102,14 +118,24 @@ begin
              resultado => reg3,
              shamt => sham,
              funcion => func);
-             
+    
+    MaquinaDeEstados: MDE
+    port map(clk => clk,
+             edo_1 => clk_pc,
+             edo_2 => clk_MemInstrucciones,
+             edo_3 => E3,
+             edo_4 => E4,
+             op => cop,
+             Aluop => Alu_op,
+             reset => reset
+                );
     
     rm: ram
-    port map(clk => clk_RAM,
+    port map(clk => E3,
              addr1 => reg1,
              addr2 => reg2,
              addr3 => reg3,
-             Escribir => clk_RegALU,
+             Escribir => E4,
              resultadoOP => valorALU,
              valor1 => val1,
              valor2 => val2);
@@ -128,7 +154,7 @@ begin
              SALIDA => resultado);
              
     reg_alu: RegistroALU
-    port map(clk => clk_RegALU,
+    port map(clk => E4,
              valor_entrada => resultado,
              valor_salida => valorALU);
 
