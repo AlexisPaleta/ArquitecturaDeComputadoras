@@ -34,7 +34,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity Union2 is
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
-           clk_pc : out STD_LOGIC;
+           clk_pc : out STD_LOGIC; --Tengo que tener estas dos salidas, que son de la maquina de estados, para poder 
+           --comunicarme con el camino 1, y asi indicar a PC y a la memoria de instrucciones cuando se deben activar
            clk_MemInstrucciones : out STD_LOGIC;
            instruccion : in STD_LOGIC_VECTOR (31 downto 0));
 end Union2;
@@ -57,7 +58,7 @@ architecture Behavioral of Union2 is
            addr2 : in STD_LOGIC_VECTOR (4 downto 0);
            addr3 : in STD_LOGIC_VECTOR (4 downto 0);
            resultadoOP : in STD_LOGIC_VECTOR (4 downto 0);
-           Escribir : in STD_LOGIC;
+           Escribir : in STD_LOGIC; --El modo de escritura se va a efectuar solo cuando sepa que el registro de la Alu tiene un valor
            valor1 : out STD_LOGIC_VECTOR (4 downto 0);
            valor2 : out STD_LOGIC_VECTOR (4 downto 0));
     end component;
@@ -105,7 +106,7 @@ architecture Behavioral of Union2 is
     signal Alu_op: std_logic_vector (1 downto 0);
     signal operacion_out: std_logic_vector (2 downto 0);
     
-    signal E1,E2,E3,E4: std_logic;
+    signal E3,E4: std_logic;
 begin
 
    Decodificador: DecodificadorInstrucciones
