@@ -34,10 +34,7 @@ use IEEE.std_logic_arith.ALL;
 --use UNISIM.VComponents.all;
 
 entity Union1y2 is
-    Port ( clk_pc : in STD_LOGIC;
-           clk_MemInstrucciones : in STD_LOGIC;
-           clk_RAM : in STD_LOGIC;
-           clk_RegALU : in STD_LOGIC;
+    Port ( clk: in STD_LOGIC;
            reset : in STD_LOGIC);
 end Union1y2;
 
@@ -51,24 +48,29 @@ architecture Behavioral of Union1y2 is
     end component;
     
     component Union2
-        Port ( clk_RAM : in STD_LOGIC;
-           clk_RegALU : in STD_LOGIC;
-    instruccion : in STD_LOGIC_VECTOR (31 downto 0));
+         Port ( clk : in STD_LOGIC;
+           reset : in STD_LOGIC;
+           clk_pc : out STD_LOGIC;
+           clk_MemInstrucciones : out STD_LOGIC;
+           instruccion : in STD_LOGIC_VECTOR (31 downto 0));
     end component;
     
     signal instruccion_interna: STD_LOGIC_VECTOR (31 downto 0);
+    signal E1,E2: std_logic;
 
 begin
 
     camino_1: Union
-        Port map( clk_pc => clk_pc,
-                  clk_MemInstrucciones => clk_MemInstrucciones,
+        Port map( clk_pc => E1,
+                  clk_MemInstrucciones => E2,
                   reset => reset,
                   instruccion => instruccion_interna);
                   
     camino_2: Union2
-        Port map( clk_RAM => clk_RAM,
-                   clk_RegALU => clk_RegALU,
+        Port map( clk => clk,
+                   reset => reset,
+                   clk_pc => E1,
+                   clk_MemInstrucciones => E2,
                   instruccion => instruccion_interna);
 
 end Behavioral;

@@ -37,6 +37,7 @@ entity MDE is
            edo_2 : out STD_LOGIC;
            edo_3 : out STD_LOGIC;
            edo_4 : out STD_LOGIC;
+           op : in STD_LOGIC_VECTOR (5 downto 0);
            Aluop : out STD_LOGIC_VECTOR (1 downto 0);
            reset : in STD_LOGIC);
 end MDE;
@@ -68,12 +69,14 @@ begin
 			    edo_2 <= '0';
 			    edo_3 <= '0';
 			    edo_4 <= '0';
+			    Aluop <= "11";
 			    Edo_siguiente <= E1;
 	       when E1 =>
 	            edo_1 <= '0';
 			    edo_2 <= '1';
 			    edo_3 <= '0';
 			    edo_4 <= '0';
+			    Aluop <= "11";
 			    Edo_siguiente <= E2;
 	       
 	       when E2 =>
@@ -81,6 +84,7 @@ begin
 			    edo_2 <= '0';
 			    edo_3 <= '1';
 			    edo_4 <= '0';
+			    Aluop <= "11";
 			    Edo_siguiente <= E3;
 	       
 	       when E3 =>
@@ -88,6 +92,7 @@ begin
 			    edo_2 <= '0';
 			    edo_3 <= '0';
 			    edo_4 <= '1';
+			    Aluop <= "11";
 			    Edo_siguiente <= E0;   
 	   end case;
 	end process;
