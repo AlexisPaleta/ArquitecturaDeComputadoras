@@ -10,7 +10,7 @@ entity ctrlAlu is
 end ctrlAlu;
 
 architecture Behavioral of ctrlAlu is
-    signal op: std_logic_vector (2 downto 0):= "000";
+    --signal op: std_logic_vector (2 downto 0):= "000";
 begin
     process(ALUop, funcion) begin
         case ALUop is 
@@ -32,6 +32,8 @@ begin
                         op <= "011";
                     when "000101" => -- Neg de B
                         op <= "100";
+                    when "000110" => -- Neg de B
+                        op <= "101";
                     when others =>
                         op <= "111";
                 end case;
@@ -40,5 +42,5 @@ begin
        end case;
     end process;
     
-    operacion <= op;
+    --operacion <= op;
 end Behavioral;

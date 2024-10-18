@@ -33,10 +33,10 @@ use IEEE.numeric_std.all;
 --use UNISIM.VComponents.all;
 
 entity Alu is
-    Port ( A : in  STD_LOGIC_VECTOR (4 downto 0);
-           B : in  STD_LOGIC_VECTOR (4 downto 0);
+    Port ( A : in  STD_LOGIC_VECTOR (31 downto 0);
+           B : in  STD_LOGIC_VECTOR (31 downto 0);
            C : in  STD_LOGIC_VECTOR (2 downto 0);
-           SALIDA : out  STD_LOGIC_VECTOR (4 downto 0));
+           SALIDA : out  STD_LOGIC_VECTOR (31 downto 0));
 end Alu;
 
 architecture Behavioral of Alu is
@@ -45,16 +45,16 @@ begin
 
 PROCESS(A,B,C)
 
-		variable A_unsigned : unsigned(4 downto 0);  -- A como unsigned para la suma, and y or
-		variable B_unsigned : unsigned(4 downto 0);  -- B como unsigned para la suma, and y or
-		variable A_signed : signed(4 downto 0);
-		variable B_signed : signed(4 downto 0);      -- B como signed para resta
-		variable Resultado_unsigned : unsigned(4 downto 0);  -- Resultado unsigned para suma, and y or
-		variable Resultado_signed : signed(4 downto 0);
+		variable A_unsigned : unsigned(31 downto 0);  -- A como unsigned para la suma, and y or
+		variable B_unsigned : unsigned(31 downto 0);  -- B como unsigned para la suma, and y or
+		variable A_signed : signed(31 downto 0);
+		variable B_signed : signed(31 downto 0);      -- B como signed para resta
+		variable Resultado_unsigned : unsigned(31 downto 0);  -- Resultado unsigned para suma, and y or
+		variable Resultado_signed : signed(31 downto 0);
 
 BEGIN
 
-	 A_unsigned := unsigned(A);
+	A_unsigned := unsigned(A);
     B_unsigned := unsigned(B);
     A_signed := signed(A);  -- Se agrega un cero a la izquierda
     B_signed := signed(B);  -- Se agrega un cero a la izquierda
@@ -62,17 +62,23 @@ BEGIN
 	
 	CASE C IS
 		WHEN "000"=>
-			Resultado_unsigned := (A_unsigned) + (B_unsigned); --Aqui se agrega el cero a la izquierda, porque la salida es de 5 bits
-         SALIDA <= std_logic_vector(Resultado_unsigned);
+			Resultado_signed := (A_signed) + (B_signed); --Aqui se agrega el cero a la izquierda, porque la salida es de 5 bits
+         SALIDA <= std_logic_vector(Resultado_signed);
 		WHEN "001" =>
 			Resultado_signed := A_signed - B_signed;
          SALIDA <= std_logic_vector(Resultado_signed);
 		WHEN "010"=>
-			Resultado_unsigned := (A_unsigned and B_unsigned);  
-         SALIDA <= std_logic_vector(Resultado_unsigned);
+			Resultado_signed := (A_signed and B_signed);  
+         SALIDA <= std_logic_vector(Resultado_signed);
 		WHEN "011" =>
-			Resultado_unsigned := (A_unsigned or B_unsigned);   
-         SALIDA <= std_logic_vector(Resultado_unsigned);
+			Resultado_signed := (A_signed or B_signed);   
+         SALIDA <= std_logic_vector(Resultado_signed);
+        WHEN "100" =>
+            Resultado_signed := (not(A_signed)); 
+            SALIDA <= std_logic_vector(Resultado_signed);
+        WHEN "101" =>
+            Resultado_signed := not(A_signed) + 1; 
+            SALIDA <= std_logic_vector(Resultado_signed);
 		WHEN OTHERS =>
 			-- Caso por defecto
          SALIDA <= (others => '0'); 
