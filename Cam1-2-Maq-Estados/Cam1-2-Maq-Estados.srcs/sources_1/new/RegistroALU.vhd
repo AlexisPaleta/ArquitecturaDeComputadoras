@@ -33,12 +33,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity RegistroALU is
     Port ( clk : in STD_LOGIC;
-           valor_entrada : in STD_LOGIC_VECTOR (4 downto 0);
-           valor_salida : out STD_LOGIC_VECTOR (4 downto 0));
+           valor_entrada : in STD_LOGIC_VECTOR (31 downto 0);
+           valor_salida : out STD_LOGIC_VECTOR (31 downto 0));
 end RegistroALU;
 
 architecture Behavioral of RegistroALU is
-    signal valor: STD_LOGIC_VECTOR (4 downto 0);
+    signal valor: STD_LOGIC_VECTOR (31 downto 0);
 begin
 
     process (clk) begin

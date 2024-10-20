@@ -34,13 +34,13 @@ use IEEE.std_logic_arith.ALL;
 --use UNISIM.VComponents.all;
 
 entity PC is
-    Port ( PC_in : in STD_LOGIC_VECTOR (3 downto 0);
+    Port ( PC_in : in STD_LOGIC_VECTOR (4 downto 0);
            clk : in STD_LOGIC;
-           PC_out : out STD_LOGIC_VECTOR (3 downto 0));
+           PC_out : out STD_LOGIC_VECTOR (4 downto 0));
 end PC;
 
 architecture Behavioral of PC is
-signal temp_reg: STD_LOGIC_VECTOR(3 downto 0) := "0000";
+signal temp_reg: STD_LOGIC_VECTOR(4 downto 0) := "00000";
 begin
 
     proceso_PC: process (clk) begin

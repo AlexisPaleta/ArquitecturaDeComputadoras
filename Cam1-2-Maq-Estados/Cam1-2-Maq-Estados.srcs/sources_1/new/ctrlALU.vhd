@@ -32,6 +32,8 @@ begin
                         op <= "011";
                     when "000101" => -- Neg de B
                         op <= "100";
+                    when "000110" => -- Neg de B
+                        op <= "101";
                     when others =>
                         op <= "111";
                 end case;

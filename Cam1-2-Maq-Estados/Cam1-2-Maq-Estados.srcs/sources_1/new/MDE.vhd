@@ -96,6 +96,16 @@ begin
 			    Edo_siguiente <= E0;   
 	   end case;
 	end process;
+	
+	process(op)
+	begin
+	   case op is
+	      when "000000" =>
+	           Aluop <= "11";
+	      when others =>
+	           Aluop <= "11";
+	   end case;
+	end process;
 
 
 end Behavioral;
