@@ -43,25 +43,25 @@ end Union;
 architecture Behavioral of Union is
 
 component PC
-    Port ( PC_in : in STD_LOGIC_VECTOR (3 downto 0);
+    Port ( PC_in : in STD_LOGIC_VECTOR (4 downto 0);
            clk : in STD_LOGIC;
-           PC_out : out STD_LOGIC_VECTOR (3 downto 0));
+           PC_out : out STD_LOGIC_VECTOR (4 downto 0));
 end component;
 
 component sumador --Este realmente es el sumador, porque PC si seria como el contador, o mas bien un mini registro
-Port ( entradaPC : in STD_LOGIC_VECTOR (3 downto 0);
+Port ( entradaPC : in STD_LOGIC_VECTOR (4 downto 0);
        reset : in std_logic;
-       cnt_out : out STD_LOGIC_VECTOR (3 downto 0));
+       cnt_out : out STD_LOGIC_VECTOR (4 downto 0));
 end component;
 
 component MemoriaDeInstrucciones 
-    Port ( addr : in STD_LOGIC_VECTOR (3 downto 0);
+    Port ( addr : in STD_LOGIC_VECTOR (4 downto 0);
            clk : in STD_LOGIC;
            instruccion : out STD_LOGIC_VECTOR (31 downto 0));
 end component;
 
-signal PC_out_reg: std_logic_vector (3 downto  0);
-signal cnt_out_reg: std_logic_vector (3 downto 0);
+signal PC_out_reg: std_logic_vector (4 downto  0);
+signal cnt_out_reg: std_logic_vector (4 downto 0);
 
 begin
 

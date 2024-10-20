@@ -34,24 +34,24 @@ use IEEE.std_logic_arith.ALL;
 --use UNISIM.VComponents.all;
 
 entity sumador is  --Este realmente vendria a ser el sumador
-    Port ( entradaPC : in STD_LOGIC_VECTOR (3 downto 0);
+    Port ( entradaPC : in STD_LOGIC_VECTOR (4 downto 0);
            reset : in std_logic;
-           cnt_out : out STD_LOGIC_VECTOR (3 downto 0));
+           cnt_out : out STD_LOGIC_VECTOR (4 downto 0));
 end sumador;
 
 architecture Behavioral of sumador is
-    signal contador: STD_LOGIC_VECTOR(3 downto 0);
-    signal temp: STD_LOGIC_VECTOR(3 downto 0);
+    signal contador: STD_LOGIC_VECTOR(4 downto 0);
+    signal temp: STD_LOGIC_VECTOR(4 downto 0);
 begin
     
     proceso_contador: process (entradaPC,reset) 
     begin
 		    if(reset = '1') then
-			     temp <= "0000";
+			     temp <= "00000";
 		    else
 			     temp <= entradaPC + 1;
-			     if(temp = "1000") then
-				    temp <= "0000";
+			     if(temp = "11111") then
+				    temp <= "00000";
 			     end if;
 			 end if;
 	end process;

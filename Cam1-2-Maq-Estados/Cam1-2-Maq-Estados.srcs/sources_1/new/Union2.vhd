@@ -57,10 +57,10 @@ architecture Behavioral of Union2 is
            addr1 : in STD_LOGIC_VECTOR (4 downto 0);
            addr2 : in STD_LOGIC_VECTOR (4 downto 0);
            addr3 : in STD_LOGIC_VECTOR (4 downto 0);
-           resultadoOP : in STD_LOGIC_VECTOR (4 downto 0);
+           resultadoOP : in STD_LOGIC_VECTOR (31 downto 0);
            Escribir : in STD_LOGIC; --El modo de escritura se va a efectuar solo cuando sepa que el registro de la Alu tiene un valor
-           valor1 : out STD_LOGIC_VECTOR (4 downto 0);
-           valor2 : out STD_LOGIC_VECTOR (4 downto 0));
+           valor1 : out STD_LOGIC_VECTOR (31 downto 0);
+           valor2 : out STD_LOGIC_VECTOR (31 downto 0));
     end component;
     
     component ctrlAlu
@@ -70,16 +70,16 @@ architecture Behavioral of Union2 is
     end component;
     
     component Alu
-       Port ( A : in  STD_LOGIC_VECTOR (4 downto 0);
-              B : in  STD_LOGIC_VECTOR (4 downto 0);
+       Port ( A : in  STD_LOGIC_VECTOR (31 downto 0);
+              B : in  STD_LOGIC_VECTOR (31 downto 0);
               C : in  STD_LOGIC_VECTOR (2 downto 0);
-              SALIDA : out  STD_LOGIC_VECTOR (4 downto 0));
+              SALIDA : out  STD_LOGIC_VECTOR (31 downto 0));
     end component;
     
     component RegistroALU
         Port ( clk : in STD_LOGIC;
-           valor_entrada : in STD_LOGIC_VECTOR (4 downto 0);
-           valor_salida : out STD_LOGIC_VECTOR (4 downto 0));
+           valor_entrada : in STD_LOGIC_VECTOR (31 downto 0);
+           valor_salida : out STD_LOGIC_VECTOR (31 downto 0));
     end component;
     
     component MDE
@@ -99,10 +99,11 @@ architecture Behavioral of Union2 is
     signal reg3: std_logic_vector (4 downto 0);
     signal sham: std_logic_vector (4 downto 0);
     signal func: std_logic_vector (5 downto 0);
-    signal resultado: std_logic_vector (4 downto 0);
-    signal valorALU: std_logic_vector (4 downto 0);
-    signal val1: std_logic_vector (4 downto 0);
-    signal val2: std_logic_vector (4 downto 0);
+    
+    signal resultado: std_logic_vector (31 downto 0);
+    signal valorALU: std_logic_vector (31 downto 0);
+    signal val1: std_logic_vector (31 downto 0);
+    signal val2: std_logic_vector (31 downto 0);
     signal Alu_op: std_logic_vector (1 downto 0);
     signal operacion_out: std_logic_vector (2 downto 0);
     
