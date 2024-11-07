@@ -41,12 +41,15 @@ end PC;
 
 architecture Behavioral of PC is
 signal temp_reg: STD_LOGIC_VECTOR(4 downto 0) := "00000";
+signal prueba : STD_LOGIC:='0';
+signal pru: STD_LOGIC;
 begin
 
     proceso_PC: process (clk) begin
-		if rising_edge(clk) then
+         prueba <= not(prueba);
+         if(clk'event and clk = '1') then
 			temp_reg <= PC_in; --Se almacena la direccion que venga de PC_in, y no cambiará hasta el siguiente ciclo de reloj
-		end if;
+         end if;
 	end process;
 	PC_out <= temp_reg; --Asigna el registro almacenado a la salida
     

@@ -41,7 +41,7 @@ end sumador;
 
 architecture Behavioral of sumador is
     signal contador: STD_LOGIC_VECTOR(4 downto 0);
-    signal temp: STD_LOGIC_VECTOR(4 downto 0);
+    signal temp: STD_LOGIC_VECTOR(4 downto 0):="00000";
 begin
     
     proceso_contador: process (entradaPC,reset) 

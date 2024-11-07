@@ -87,7 +87,7 @@ begin
     process(clk) 
         
     begin
-        if rising_edge(clk) then --Modo lectura
+        if (clk'event and clk='1') then --Modo lectura
                valor1 <= RAM(conv_integer(addr1)); 
                valor2 <= RAM(conv_integer(addr2));         
         end if;
@@ -99,9 +99,9 @@ begin
     --En la direccion 3, en el flanco de bajada de esa senal, para asi estar seguro de que el registro de la alu ya tiene
     --guardado un valor
     begin
-        if falling_edge(Escribir) then -- Modo escritura
-            RAM(conv_integer(addr3)) <= resultadoOP;
-        end if;   
+            if (Escribir'event and Escribir='1') then -- Modo escritura
+                RAM(conv_integer(addr3)) <= resultadoOP; 
+            end if; 
     end process;
 
 end Behavioral;

@@ -42,7 +42,7 @@ architecture Behavioral of RegistroALU is
 begin
 
     process (clk) begin
-        if(rising_edge(clk)) then
+        if(clk'event and clk='1') then
             valor <= valor_entrada;
         end if;
     end process;
