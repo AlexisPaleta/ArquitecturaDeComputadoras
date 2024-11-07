@@ -32,20 +32,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity MDE is
-    Port ( clk : in STD_LOGIC;
-           clk_pc : out STD_LOGIC;
-           clk_MemInstrucciones : out STD_LOGIC;
-           clk_RAM : out STD_LOGIC;
-           clk_regAlu : out STD_LOGIC;
-           RegDst : out STD_LOGIC;
+    Port ( RegDst : out STD_LOGIC;
            ALUSrc : out STD_LOGIC;
            MemtoReg : out STD_LOGIC;
            RegWrite : out STD_LOGIC;
            MemRead : out STD_LOGIC;
            MemWrite : out STD_LOGIC;
            op : in STD_LOGIC_VECTOR (5 downto 0);
-           Aluop : out STD_LOGIC_VECTOR (1 downto 0);
-           reset : in STD_LOGIC);
+           Aluop : out STD_LOGIC_VECTOR (1 downto 0));
 end MDE;
 
 architecture Behavioral of MDE is
@@ -55,32 +49,12 @@ architecture Behavioral of MDE is
 
 
 begin
-
-    --seccion secuencial
-	Process(clk,reset)
-	begin
-		if(reset='1')then
-			codigoOperacion <= "111111";
-		elsif (clk'event and clk='1') then
-			codigoOperacion <= op;
-		end if;
-	end process;
 	
 	--seccion combinacional
-	process(codigoOperacion) begin
+	process(op) begin
 	
-	   Case codigoOperacion is
+	   Case op is
 	       when "000000" => -- Instrucciones tipo R
-	            clk_pc <= '0';
-			    clk_MemInstrucciones <= '0';
-			    clk_RAM <= '0';
-			    clk_regAlu <= '0';
-	               
-	            
-	            clk_pc <= '1';
-			    clk_MemInstrucciones <= '1';
-			    clk_RAM <= '1';
-			    clk_regAlu <= '1';
 			    
 			    RegDst <= '1';
 			    ALUSrc <= '0';
@@ -89,16 +63,8 @@ begin
 			    MemRead <= '0';
 			    MemWrite <= '0';
 			    Aluop <= "11";
-			    
-			    clk_pc <= '0';
-			    clk_MemInstrucciones <= '0';
-			    clk_RAM <= '0';
-			    clk_regAlu <= '0';
+
 	       when "100011" => -- Instruccion tipo I - lw
-	            clk_pc <= '1';
-			    clk_MemInstrucciones <= '1';
-			    clk_RAM <= '1';
-			    clk_regAlu <= '1';
 			    
 			    RegDst <= '0';
 			    ALUSrc <= '1';
@@ -109,10 +75,6 @@ begin
 			    Aluop <= "00";
 	       
 	       when "101011" => -- Instruccion tipo I - sw
-	            clk_pc <= '1';
-			    clk_MemInstrucciones <= '1';
-			    clk_RAM <= '1';
-			    clk_regAlu <= '1';
 			    
 			    RegDst <= '1'; --Es indistinto
 			    ALUSrc <= '1';
@@ -123,10 +85,6 @@ begin
 			    Aluop <= "00";
 	       
 	       when "000100" => --Instruccion tipo J para beq
-	            clk_pc <= '1';
-			    clk_MemInstrucciones <= '1';
-			    clk_RAM <= '1';
-			    clk_regAlu <= '1';
 			    
 			    RegDst <= '1';
 			    ALUSrc <= '0';
@@ -136,10 +94,6 @@ begin
 			    MemWrite <= '0';
 			    Aluop <= "01";
 		   when "111111" =>
-		        clk_pc <= '0';
-			    clk_MemInstrucciones <= '0';
-			    clk_RAM <= '0';
-			    clk_regAlu <= '0';
 			    
 			    RegDst <= '1';
 			    ALUSrc <= '0';
@@ -149,10 +103,6 @@ begin
 			    MemWrite <= '0';
 			    Aluop <= "01";
 		   when others =>
-			    clk_pc <= '0';
-			    clk_MemInstrucciones <= '0';
-			    clk_RAM <= '0';
-			    clk_regAlu <= '0';
 			    
 			    RegDst <= '0';
 			    ALUSrc <= '0';

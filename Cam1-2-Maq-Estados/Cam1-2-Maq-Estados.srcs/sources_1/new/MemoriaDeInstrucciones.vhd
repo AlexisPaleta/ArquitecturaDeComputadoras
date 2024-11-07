@@ -35,7 +35,6 @@ use IEEE.std_logic_arith.ALL;
 
 entity MemoriaDeInstrucciones is
     Port ( addr : in STD_LOGIC_VECTOR (4 downto 0);
-           clk : in STD_LOGIC;
            instruccion : out STD_LOGIC_VECTOR (31 downto 0));
 end MemoriaDeInstrucciones;
 

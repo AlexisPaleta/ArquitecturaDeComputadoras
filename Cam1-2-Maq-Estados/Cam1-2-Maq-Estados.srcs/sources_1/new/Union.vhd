@@ -34,8 +34,7 @@ use IEEE.std_logic_arith.ALL;
 --use UNISIM.VComponents.all;
 
 entity Union is
-    Port ( clk_pc : in STD_LOGIC;
-           clk_MemInstrucciones : in STD_LOGIC;
+    Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
            instruccion : out STD_LOGIC_VECTOR (31 downto 0));
 end Union;
@@ -56,7 +55,6 @@ end component;
 
 component MemoriaDeInstrucciones 
     Port ( addr : in STD_LOGIC_VECTOR (4 downto 0);
-           clk : in STD_LOGIC;
            instruccion : out STD_LOGIC_VECTOR (31 downto 0));
 end component;
 
@@ -66,14 +64,12 @@ signal cnt_out_reg: std_logic_vector (4 downto 0);
 begin
 
     registro_instrucciones: PC 
-    port map(
-             clk => clk_pc,
+    port map(clk => clk,
              PC_in => cnt_out_reg,
              PC_out => PC_out_reg);
              
     mem_instrucciones: MemoriaDeInstrucciones
-    port map(clk => clk_MemInstrucciones,
-             addr => PC_out_reg,
+    port map(addr => PC_out_reg,
              instruccion => instruccion);
              
     sumadorInst: sumador 

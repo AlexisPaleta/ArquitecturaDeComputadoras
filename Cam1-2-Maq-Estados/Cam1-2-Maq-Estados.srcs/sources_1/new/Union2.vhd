@@ -33,10 +33,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity Union2 is
     Port ( clk : in STD_LOGIC;
-           reset : in STD_LOGIC;
-           clk_pc : out STD_LOGIC; --Tengo que tener estas dos salidas, que son de la maquina de estados, para poder 
-           --comunicarme con el camino 1, y asi indicar a PC y a la memoria de instrucciones cuando se deben activar
-           clk_MemInstrucciones : out STD_LOGIC;
            instruccion : in STD_LOGIC_VECTOR (31 downto 0));
 end Union2;
 
@@ -83,20 +79,14 @@ architecture Behavioral of Union2 is
     end component;
     
     component MDE
-        Port ( clk : in STD_LOGIC;
-           clk_pc : out STD_LOGIC;
-           clk_MemInstrucciones : out STD_LOGIC;
-           clk_RAM : out STD_LOGIC;
-           clk_regAlu : out STD_LOGIC;
-           RegDst : out STD_LOGIC;
+       Port ( RegDst : out STD_LOGIC;
            ALUSrc : out STD_LOGIC;
            MemtoReg : out STD_LOGIC;
            RegWrite : out STD_LOGIC;
            MemRead : out STD_LOGIC;
            MemWrite : out STD_LOGIC;
            op : in STD_LOGIC_VECTOR (5 downto 0);
-           Aluop : out STD_LOGIC_VECTOR (1 downto 0);
-           reset : in STD_LOGIC);
+           Aluop : out STD_LOGIC_VECTOR (1 downto 0));
     end component;
     
     signal cop: std_logic_vector (5 downto  0);
@@ -127,24 +117,18 @@ begin
              funcion => func);
     
     MaquinaDeEstados: MDE
-    port map(clk => clk,
-             clk_pc => clk_pc,
-             clk_MemInstrucciones => clk_MemInstrucciones,
-             clk_RAM => clk_RAM,
-             clk_regAlu => clk_regAlu,
-             RegDst => RegDst,
+    port map(RegDst => RegDst,
              ALUSrc => ALUSrc,
              MemtoReg => MemtoReg,
              RegWrite => RegWrite,
              MemRead => MemRead,
              MemWrite => MemWrite,
              op => cop,
-             Aluop => Alu_op,
-             reset => reset
+             Aluop => Alu_op
                 );
     
     rm: ram
-    port map(clk => clk_RAM,
+    port map(clk => clk,
              addr1 => reg1,
              addr2 => reg2,
              addr3 => reg3,
@@ -167,7 +151,7 @@ begin
              SALIDA => resultado);
              
     reg_alu: RegistroALU
-    port map(clk => clk_regAlu,
+    port map(clk => clk,
              valor_entrada => resultado,
              valor_salida => valorALU);
 

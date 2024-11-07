@@ -87,21 +87,16 @@ begin
     process(clk) 
         
     begin
-        if (clk'event and clk='1') then --Modo lectura
-               valor1 <= RAM(conv_integer(addr1)); 
-               valor2 <= RAM(conv_integer(addr2));         
+        if (clk'event and clk='1') then 
+               if(Escribir = '1') then -- Modo escritura
+                    RAM(conv_integer(addr3)) <= resultadoOP; 
+               end if;      
         end if;
        
     end process;
     
-    process(Escribir) --La senal de Escribir, va a ser la misma que el Estado 4 de la maquina de estados, que es el que
-    -- le dice al registro de la ALU que almacene un valor, solo que va a cambiar a guardar el valor que se le indique
-    --En la direccion 3, en el flanco de bajada de esa senal, para asi estar seguro de que el registro de la alu ya tiene
-    --guardado un valor
-    begin
-            if (Escribir'event and Escribir='1') then -- Modo escritura
-                RAM(conv_integer(addr3)) <= resultadoOP; 
-            end if; 
-    end process;
+    valor1 <= RAM(conv_integer(addr1)); --En todo momento se están leyendo las entradas de los datos.
+    valor2 <= RAM(conv_integer(addr2));   
+    
 
 end Behavioral;
