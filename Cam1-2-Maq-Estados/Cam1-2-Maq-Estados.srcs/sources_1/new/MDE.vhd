@@ -32,78 +32,85 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity MDE is
-    Port ( clk : in STD_LOGIC;
-           edo_1 : out STD_LOGIC;
-           edo_2 : out STD_LOGIC;
-           edo_3 : out STD_LOGIC;
-           edo_4 : out STD_LOGIC;
+    Port ( RegDst : out STD_LOGIC;
+           ALUSrc : out STD_LOGIC;
+           MemtoReg : out STD_LOGIC;
+           RegWrite : out STD_LOGIC;
+           MemRead : out STD_LOGIC;
+           MemWrite : out STD_LOGIC;
            op : in STD_LOGIC_VECTOR (5 downto 0);
-           Aluop : out STD_LOGIC_VECTOR (1 downto 0);
-           reset : in STD_LOGIC);
+           Aluop : out STD_LOGIC_VECTOR (1 downto 0));
 end MDE;
 
 architecture Behavioral of MDE is
 
     TYPE Estados is(E0,E1,E2,E3);
-    SIGNAL Edo_presente:Estados;
-    SIGNAL Edo_siguiente:Estados;
+    signal codigoOperacion: STD_LOGIC_VECTOR (5 downto 0);
 
 
 begin
+	
+	--seccion combinacional
+	process(op) begin
+	
+	   Case op is
+	       when "000000" => -- Instrucciones tipo R
+			    
+			    RegDst <= '1';
+			    ALUSrc <= '0';
+			    MemtoReg <= '0';
+			    RegWrite <= '1';
+			    MemRead <= '0';
+			    MemWrite <= '0';
+			    Aluop <= "11";
 
-    --seccion secuencial
-	Process(clk,reset)
-	begin
-		if(reset='1')then
-			Edo_presente <= E0;
-		elsif (clk'event and clk='1') then
-			Edo_presente <= Edo_siguiente;
-		end if;
-	end process;
-	
-	process(Edo_presente) begin
-	
-	   Case Edo_presente is
-	       when E0 =>
-	            edo_1 <= '1';
-			    edo_2 <= '0';
-			    edo_3 <= '0';
-			    edo_4 <= '0';
-			    Aluop <= "11";
-			    Edo_siguiente <= E1;
-	       when E1 =>
-	            edo_1 <= '0';
-			    edo_2 <= '1';
-			    edo_3 <= '0';
-			    edo_4 <= '0';
-			    Aluop <= "11";
-			    Edo_siguiente <= E2;
+	       when "100011" => -- Instruccion tipo I - lw
+			    
+			    RegDst <= '0';
+			    ALUSrc <= '1';
+			    MemtoReg <= '1';
+			    RegWrite <= '1';
+			    MemRead <= '1';
+			    MemWrite <= '0';
+			    Aluop <= "00";
 	       
-	       when E2 =>
-	            edo_1 <= '0';
-			    edo_2 <= '0';
-			    edo_3 <= '1';
-			    edo_4 <= '0';
-			    Aluop <= "11";
-			    Edo_siguiente <= E3;
+	       when "101011" => -- Instruccion tipo I - sw
+			    
+			    RegDst <= '1'; --Es indistinto
+			    ALUSrc <= '1';
+			    MemtoReg <= '0';
+			    RegWrite <= '0';
+			    MemRead <= '0';
+			    MemWrite <= '1';
+			    Aluop <= "00";
 	       
-	       when E3 =>
-	            edo_1 <= '0';
-			    edo_2 <= '0';
-			    edo_3 <= '0';
-			    edo_4 <= '1';
-			    Aluop <= "11";
-			    Edo_siguiente <= E0;   
-	   end case;
-	end process;
-	
-	process(op)
-	begin
-	   case op is
-	      when "000000" =>
-	           Aluop <= "11";
-	      when others =>
-	           Aluop <= "11";
+	       when "000100" => --Instruccion tipo J para beq
+			    
+			    RegDst <= '1';
+			    ALUSrc <= '0';
+			    MemtoReg <= '0';
+			    RegWrite <= '0';
+			    MemRead <= '0';
+			    MemWrite <= '0';
+			    Aluop <= "01";
+		   when "111111" =>
+			    
+			    RegDst <= '1';
+			    ALUSrc <= '0';
+			    MemtoReg <= '0';
+			    RegWrite <= '0';
+			    MemRead <= '0';
+			    MemWrite <= '0';
+			    Aluop <= "01";
+		   when others =>
+			    
+			    RegDst <= '0';
+			    ALUSrc <= '0';
+			    MemtoReg <= '0';
+			    RegWrite <= '0';
+			    MemRead <= '0';
+			    MemWrite <= '0';
+			    Aluop <= "01";
 	   end case;
 	end process;
 

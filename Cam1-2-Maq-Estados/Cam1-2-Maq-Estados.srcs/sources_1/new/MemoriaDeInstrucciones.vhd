@@ -35,7 +35,6 @@ use IEEE.std_logic_arith.ALL;
 
 entity MemoriaDeInstrucciones is
     Port ( addr : in STD_LOGIC_VECTOR (4 downto 0);
-           clk : in STD_LOGIC;
            instruccion : out STD_LOGIC_VECTOR (31 downto 0));
 end MemoriaDeInstrucciones;
 
@@ -76,12 +75,10 @@ constant rom_data : rom_type := (
 				"00000000011000100000100000000111");
 begin
 
-process(clk)
-	begin
-		if rising_edge(clk) then
+
 			instruccion <= rom_data(conv_integer(addr)); --Se va a ir a la salida el codigo en MIPS de la operacion indicada por addr en rom_data
-		end if;
-	end process;
+
+
 
 
 end Behavioral;
