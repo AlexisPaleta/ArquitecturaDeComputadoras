@@ -45,6 +45,7 @@ architecture Behavioral of Union2 is
            registro2 : out STD_LOGIC_VECTOR (4 downto 0);
            resultado : out STD_LOGIC_VECTOR (4 downto 0);
            shamt : out STD_LOGIC_VECTOR (4 downto 0);
+           extension : out STD_LOGIC_VECTOR (15 downto 0);
            funcion : out STD_LOGIC_VECTOR (5 downto 0));
     end component;
     
@@ -89,6 +90,41 @@ architecture Behavioral of Union2 is
            Aluop : out STD_LOGIC_VECTOR (1 downto 0));
     end component;
     
+    component multiplexor5bits
+        Port ( rt : in STD_LOGIC_VECTOR (4 downto 0);
+           rd : in STD_LOGIC_VECTOR (4 downto 0);
+           rw : out STD_LOGIC_VECTOR (4 downto 0);
+           RegDst : in STD_LOGIC);
+    end component;
+    
+    component multiplexor32bitsALUSrc
+        Port ( busB : in STD_LOGIC_VECTOR (31 downto 0);
+           inmed : in STD_LOGIC_VECTOR (31 downto 0);
+           rw : out STD_LOGIC_VECTOR (31 downto 0);
+           ALUSrc : in STD_LOGIC);
+    end component;
+    
+    component MemoriaDeDatos
+        Port ( clk : in STD_LOGIC;
+           ADDR : in std_logic_vector(31 downto 0);
+           DW : in std_logic_vector(31 downto 0);
+           DR : out std_logic_vector(31 downto 0);
+           MemRead: in std_logic;
+           MemWrite: in std_logic);
+    end component;
+    
+    component multiplexor32bitsMemtoReg
+        Port ( DR : in STD_LOGIC_VECTOR (31 downto 0);
+           salidaALU : in STD_LOGIC_VECTOR (31 downto 0);
+           busW : out STD_LOGIC_VECTOR (31 downto 0);
+           MemtoReg : in STD_LOGIC);
+    end component;
+    
+    component ExtensionSigno
+        Port ( inm : in STD_LOGIC_VECTOR (15 downto 0);
+           inmed : out STD_LOGIC_VECTOR (31 downto 0));
+    end component;
+    
     signal cop: std_logic_vector (5 downto  0);
     signal reg1: std_logic_vector (4 downto 0);
     signal reg2: std_logic_vector (4 downto 0);
@@ -103,7 +139,16 @@ architecture Behavioral of Union2 is
     signal Alu_op: std_logic_vector (1 downto 0);
     signal operacion_out: std_logic_vector (2 downto 0);
     
-    signal clk_RAM,clk_regAlu,RegWrite,RegDst,ALUSrc,MemtoReg,MemRead,MemWrite: std_logic;
+    signal rw: std_logic_vector (4 downto 0);
+    signal valorBALU: std_logic_vector (31 downto 0);
+    signal busW: std_logic_vector (31 downto 0);
+    signal inmediato: std_logic_vector (31 downto 0);
+    signal extension: std_logic_vector (15 downto 0);
+    signal DR: std_logic_vector (31 downto 0);
+    
+    
+    
+    signal RegWrite,RegDst,ALUSrc,MemtoReg,MemRead,MemWrite: std_logic;
 begin
 
    Decodificador: DecodificadorInstrucciones
@@ -114,6 +159,7 @@ begin
              registro2 => reg2,
              resultado => reg3,
              shamt => sham,
+             extension => extension,
              funcion => func);
     
     MaquinaDeEstados: MDE
@@ -124,16 +170,15 @@ begin
              MemRead => MemRead,
              MemWrite => MemWrite,
              op => cop,
-             Aluop => Alu_op
-                );
+             Aluop => Alu_op);
     
     rm: ram
     port map(clk => clk,
              addr1 => reg1,
              addr2 => reg2,
-             addr3 => reg3,
+             addr3 => rw,
              Escribir => RegWrite,
-             resultadoOP => resultado,
+             resultadoOP => busW,
              valor1 => val1,
              valor2 => val2);
              
@@ -146,9 +191,39 @@ begin
              
     ALU1: Alu
     port map(A => val1,
-             B => val2,
+             B => valorBALU,
              C => operacion_out,
              SALIDA => resultado);
+             
+    MuxRegDst: multiplexor5bits
+    port map(rt => reg2,
+             rd => reg3,
+             rw => rw,
+             RegDst => RegDst);
+             
+    MuxALUSrc: multiplexor32bitsALUSrc
+    port map(busB => val2,
+             inmed => inmediato,
+             rw => valorBALU,
+             ALUSrc => ALUSrc);
+             
+    ExtensionSig: ExtensionSigno
+    port map(inm => extension,
+             inmed => inmediato);
+             
+    MemDatos: MemoriaDeDatos
+    port map(clk => clk,
+             ADDR => resultado,
+             DW => val2,
+             DR => DR,
+             MemRead => MemRead,
+             MemWrite => MemWrite);
+             
+    MuxMemtoReg: multiplexor32bitsMemtoReg
+    port map(DR => DR,
+             salidaALU => resultado,
+             busW => busW,
+             MemtoReg => MemtoReg);
              
     reg_alu: RegistroALU
     port map(clk => clk,

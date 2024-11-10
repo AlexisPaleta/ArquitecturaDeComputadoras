@@ -2,13 +2,18 @@
 vhdl xil_defaultlib  \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/Alu.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/DecodificadorInstrucciones.vhd" \
+"../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/ExtensionSigno.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/MDE.vhd" \
+"../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/MemoriaDeDatos.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/MemoriaDeInstrucciones.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/PC.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/RegistroALU.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/Union.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/Union2.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/ctrlALU.vhd" \
+"../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/multiplexor32bitsALUSrc.vhd" \
+"../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/multiplexor32bitsMemtoReg.vhd" \
+"../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/multiplexor5bits.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/ram.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/sumador.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/Union1y2.vhd" \

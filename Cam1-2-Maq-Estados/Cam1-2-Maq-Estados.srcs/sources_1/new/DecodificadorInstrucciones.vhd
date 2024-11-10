@@ -40,6 +40,7 @@ entity DecodificadorInstrucciones is
            registro2 : out STD_LOGIC_VECTOR (4 downto 0);
            resultado : out STD_LOGIC_VECTOR (4 downto 0);
            shamt : out STD_LOGIC_VECTOR (4 downto 0);
+           extension : out STD_LOGIC_VECTOR (15 downto 0);
            funcion : out STD_LOGIC_VECTOR (5 downto 0));
 end DecodificadorInstrucciones;
 
@@ -52,6 +53,7 @@ begin
     resultado <= instruccion(15 downto 11);
     shamt <= instruccion(10 downto 6);
     funcion <= instruccion(5 downto 0);
+    extension <= instruccion(15 downto 0);
 
 
 end Behavioral;

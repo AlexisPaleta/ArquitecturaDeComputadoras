@@ -1,7 +1,7 @@
-Running: xsim.dir/Union1y2_behav/xsimk.exe -simmode gui -wdb Union1y2_behav.wdb -simrunnum 0 -socket 63758
+Running: xsim.dir/Union1y2_behav/xsimk.exe -simmode gui -wdb Union1y2_behav.wdb -simrunnum 0 -socket 56674
 Design successfully loaded
-Design Loading Memory Usage: 9056 KB (Peak: 9056 KB)
-Design Loading CPU Usage: 0 ms
+Design Loading Memory Usage: 7656 KB (Peak: 7656 KB)
+Design Loading CPU Usage: 31 ms
 Simulation completed
-Simulation Memory Usage: 9608 KB (Peak: 9608 KB)
-Simulation CPU Usage: 15 ms
+Simulation Memory Usage: 8212 KB (Peak: 8212 KB)
+Simulation CPU Usage: 124 ms
