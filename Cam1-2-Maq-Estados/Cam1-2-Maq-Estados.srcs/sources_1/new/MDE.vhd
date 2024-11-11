@@ -69,10 +69,14 @@ begin
 			    RegDst <= '0';
 			    ALUSrc <= '1';
 			    MemtoReg <= '1';
-			    RegWrite <= '1';
+			    
 			    MemRead <= '1';
 			    MemWrite <= '0';
 			    Aluop <= "00";
+			    
+			    RegWrite <= '1';
+			    
+			    
 	       
 	       when "101011" => -- Instruccion tipo I - sw
 			    
