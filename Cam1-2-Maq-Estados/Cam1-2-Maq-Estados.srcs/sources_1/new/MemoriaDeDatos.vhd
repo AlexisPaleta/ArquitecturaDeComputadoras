@@ -86,11 +86,13 @@ begin
 	begin
 		if (rising_edge(clk)) then
 			if (MemRead = '1') then
-				DR <= MemDatos(conv_integer(ADDR)/4); -- se convierte la direccion en entero y se divide por cuatro y da como resultado el indice para leer la memoria de datos
+				
 			elsif (MemWrite = '1')then  
 				MemDatos(conv_integer(ADDR)/4)<=  DW; -- se convierte la direccion en entero y se divide por cuatro y da como resultado el indice para  guardar en memoria de datos
 			end if;
 		end if;
 	end process;
+	
+	DR <= MemDatos(conv_integer(ADDR)/4) when (MemRead = '1') else "00000000000000000000000000000000"; -- se convierte la direccion en entero y se divide por cuatro y da como resultado el indice para leer la memoria de datos
 
 end Behavioral;

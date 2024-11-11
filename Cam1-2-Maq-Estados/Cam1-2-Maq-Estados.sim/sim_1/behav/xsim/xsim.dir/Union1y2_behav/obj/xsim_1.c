@@ -77,17 +77,18 @@ IKI_DLLESPEC extern void execute_75(char*, char *);
 IKI_DLLESPEC extern void execute_77(char*, char *);
 IKI_DLLESPEC extern void execute_79(char*, char *);
 IKI_DLLESPEC extern void execute_81(char*, char *);
-IKI_DLLESPEC extern void execute_83(char*, char *);
-IKI_DLLESPEC extern void execute_85(char*, char *);
+IKI_DLLESPEC extern void execute_82(char*, char *);
+IKI_DLLESPEC extern void execute_84(char*, char *);
 IKI_DLLESPEC extern void execute_86(char*, char *);
+IKI_DLLESPEC extern void execute_87(char*, char *);
 IKI_DLLESPEC extern void transaction_0(char*, char*, unsigned, unsigned, unsigned);
 IKI_DLLESPEC extern void vhdl_transfunc_eventcallback(char*, char*, unsigned, unsigned, unsigned, char *);
-funcp funcTab[28] = {(funcp)execute_36, (funcp)execute_37, (funcp)execute_39, (funcp)execute_41, (funcp)execute_42, (funcp)execute_45, (funcp)execute_46, (funcp)execute_47, (funcp)execute_48, (funcp)execute_49, (funcp)execute_50, (funcp)execute_51, (funcp)execute_53, (funcp)execute_55, (funcp)execute_56, (funcp)execute_57, (funcp)execute_59, (funcp)execute_60, (funcp)execute_73, (funcp)execute_75, (funcp)execute_77, (funcp)execute_79, (funcp)execute_81, (funcp)execute_83, (funcp)execute_85, (funcp)execute_86, (funcp)transaction_0, (funcp)vhdl_transfunc_eventcallback};
-const int NumRelocateId= 28;
+funcp funcTab[29] = {(funcp)execute_36, (funcp)execute_37, (funcp)execute_39, (funcp)execute_41, (funcp)execute_42, (funcp)execute_45, (funcp)execute_46, (funcp)execute_47, (funcp)execute_48, (funcp)execute_49, (funcp)execute_50, (funcp)execute_51, (funcp)execute_53, (funcp)execute_55, (funcp)execute_56, (funcp)execute_57, (funcp)execute_59, (funcp)execute_60, (funcp)execute_73, (funcp)execute_75, (funcp)execute_77, (funcp)execute_79, (funcp)execute_81, (funcp)execute_82, (funcp)execute_84, (funcp)execute_86, (funcp)execute_87, (funcp)transaction_0, (funcp)vhdl_transfunc_eventcallback};
+const int NumRelocateId= 29;
 
 void relocate(char *dp)
 {
-	iki_relocate(dp, "xsim.dir/Union1y2_behav/xsim.reloc",  (void **)funcTab, 28);
+	iki_relocate(dp, "xsim.dir/Union1y2_behav/xsim.reloc",  (void **)funcTab, 29);
 	iki_vhdl_file_variable_register(dp + 14744);
 	iki_vhdl_file_variable_register(dp + 14800);
 
