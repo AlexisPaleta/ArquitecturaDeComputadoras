@@ -15,7 +15,7 @@ begin
     process(ALUop, funcion) begin
         case ALUop is 
             when "00" => --
-               op <= "101";
+               op <= "000";
             when "01" => --
                 op <= "110";
             when "10" => -- 

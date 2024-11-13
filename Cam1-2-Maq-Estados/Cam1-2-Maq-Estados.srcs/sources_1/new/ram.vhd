@@ -48,7 +48,7 @@ architecture Behavioral of ram is
     signal control: std_logic := '0';
     type ram_type is array (0 to 31) of STD_LOGIC_VECTOR(31 downto 0); --para las 9 instrucciones
     signal RAM : ram_type := ( 
-    "00000000000000000000000000000001",
+    "00000000000000000000000000000000",
     "00000000000000000000000000000010",
     "00000000000000000000000000000011",
     "00000000000000000000000000000100",
