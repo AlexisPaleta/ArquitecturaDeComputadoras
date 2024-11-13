@@ -36,6 +36,7 @@ entity Alu is
     Port ( A : in  STD_LOGIC_VECTOR (31 downto 0);
            B : in  STD_LOGIC_VECTOR (31 downto 0);
            C : in  STD_LOGIC_VECTOR (2 downto 0);
+           zero: out std_logic;
            SALIDA : out  STD_LOGIC_VECTOR (31 downto 0));
 end Alu;
 
@@ -64,24 +65,35 @@ BEGIN
 		WHEN "000"=>
 			Resultado_signed := (A_signed) + (B_signed); --Aqui se agrega el cero a la izquierda, porque la salida es de 5 bits
          SALIDA <= std_logic_vector(Resultado_signed);
+         zero <= '0';
 		WHEN "001" =>
 			Resultado_signed := A_signed - B_signed;
          SALIDA <= std_logic_vector(Resultado_signed);
+         zero <= '0';
 		WHEN "010"=>
 			Resultado_signed := (A_signed and B_signed);  
-         SALIDA <= std_logic_vector(Resultado_signed);
+            SALIDA <= std_logic_vector(Resultado_signed);
+            if (A_signed = B_signed) then
+                zero <= '1';
+            else 
+                zero <= '0';
+            end if;
+         
 		WHEN "011" =>
 			Resultado_signed := (A_signed or B_signed);   
          SALIDA <= std_logic_vector(Resultado_signed);
         WHEN "100" =>
             Resultado_signed := (not(A_signed)); 
             SALIDA <= std_logic_vector(Resultado_signed);
+            zero <= '0';
         WHEN "101" =>
             Resultado_signed := not(A_signed) + 1; 
             SALIDA <= std_logic_vector(Resultado_signed);
+            zero <= '0';
 		WHEN OTHERS =>
 			-- Caso por defecto
          SALIDA <= (others => '0'); 
+         zero <= '0';
 	END CASE;
 	
 END PROCESS;

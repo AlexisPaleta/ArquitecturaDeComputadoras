@@ -33,6 +33,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity Union2 is
     Port ( clk : in STD_LOGIC;
+           SumaInstruccion : in STD_LOGIC_VECTOR (4 downto 0);
+           nuevaInstruccion : out STD_LOGIC_VECTOR (4 downto 0);
            instruccion : in STD_LOGIC_VECTOR (31 downto 0));
 end Union2;
 
@@ -68,9 +70,10 @@ architecture Behavioral of Union2 is
     
     component Alu
        Port ( A : in  STD_LOGIC_VECTOR (31 downto 0);
-              B : in  STD_LOGIC_VECTOR (31 downto 0);
-              C : in  STD_LOGIC_VECTOR (2 downto 0);
-              SALIDA : out  STD_LOGIC_VECTOR (31 downto 0));
+           B : in  STD_LOGIC_VECTOR (31 downto 0);
+           C : in  STD_LOGIC_VECTOR (2 downto 0);
+           zero: out std_logic;
+           SALIDA : out  STD_LOGIC_VECTOR (31 downto 0));
     end component;
     
     component RegistroALU
@@ -86,6 +89,7 @@ architecture Behavioral of Union2 is
            RegWrite : out STD_LOGIC;
            MemRead : out STD_LOGIC;
            MemWrite : out STD_LOGIC;
+           branch: out std_logic;
            op : in STD_LOGIC_VECTOR (5 downto 0);
            Aluop : out STD_LOGIC_VECTOR (1 downto 0));
     end component;
@@ -125,6 +129,14 @@ architecture Behavioral of Union2 is
            inmed : out STD_LOGIC_VECTOR (31 downto 0));
     end component;
     
+    component multiplexorSaltosPCSrc
+        Port ( zero : in STD_LOGIC;
+           branch : in STD_LOGIC;
+           PC : in STD_LOGIC_VECTOR (4 downto 0);
+           Inmediato : in STD_LOGIC_VECTOR (4 downto 0);
+           salidaPCSrcs : out STD_LOGIC_VECTOR (4 downto 0));
+    end component;
+    
     signal cop: std_logic_vector (5 downto  0);
     signal reg1: std_logic_vector (4 downto 0);
     signal reg2: std_logic_vector (4 downto 0);
@@ -146,9 +158,11 @@ architecture Behavioral of Union2 is
     signal extension: std_logic_vector (15 downto 0);
     signal DR: std_logic_vector (31 downto 0);
     
+    signal ins_reducida: std_logic_vector (4 downto 0);
     
     
-    signal RegWrite,RegDst,ALUSrc,MemtoReg,MemRead,MemWrite: std_logic;
+    
+    signal RegWrite,RegDst,ALUSrc,MemtoReg,MemRead,MemWrite, branch, zero: std_logic;
 begin
 
    Decodificador: DecodificadorInstrucciones
@@ -170,6 +184,7 @@ begin
              MemRead => MemRead,
              MemWrite => MemWrite,
              op => cop,
+             branch => branch,
              Aluop => Alu_op);
     
     rm: ram
@@ -193,6 +208,7 @@ begin
     port map(A => val1,
              B => valorBALU,
              C => operacion_out,
+             zero => zero,
              SALIDA => resultado);
              
     MuxRegDst: multiplexor5bits
@@ -229,6 +245,14 @@ begin
     port map(clk => clk,
              valor_entrada => resultado,
              valor_salida => valorALU);
+             
+    MuxPCSrc: multiplexorSaltosPCSrc
+    port map(branch => branch,
+             Inmediato => inmediato(4 downto 0),
+             zero => zero,
+             PC => SumaInstruccion,
+             salidaPCSrcs => nuevaInstruccion
+                );
 
     
 end Behavioral;

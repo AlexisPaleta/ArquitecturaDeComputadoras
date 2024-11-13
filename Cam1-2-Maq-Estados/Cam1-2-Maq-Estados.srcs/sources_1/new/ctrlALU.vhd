@@ -14,10 +14,10 @@ architecture Behavioral of ctrlAlu is
 begin
     process(ALUop, funcion) begin
         case ALUop is 
-            when "00" => --
+            when "00" => --lw y sw
                op <= "000";
-            when "01" => --
-                op <= "110";
+            when "01" => -- beq
+                op <= "010";
             when "10" => -- 
                 op <= "111";
             when "11" => -- Para las tipo R

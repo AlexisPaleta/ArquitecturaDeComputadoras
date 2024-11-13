@@ -14,6 +14,7 @@ vhdl xil_defaultlib  \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/multiplexor32bitsALUSrc.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/multiplexor32bitsMemtoReg.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/multiplexor5bits.vhd" \
+"../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/multiplexorSaltosPCSrc.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/ram.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/sumador.vhd" \
 "../../../../Cam1-2-Maq-Estados.srcs/sources_1/new/Union1y2.vhd" \

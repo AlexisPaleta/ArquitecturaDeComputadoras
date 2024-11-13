@@ -36,6 +36,8 @@ use IEEE.std_logic_arith.ALL;
 entity Union is
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
+           NuevaInstruccion : in STD_LOGIC_VECTOR (4 downto 0);
+           SumaInstruccion : out STD_LOGIC_VECTOR (4 downto 0);
            instruccion : out STD_LOGIC_VECTOR (31 downto 0));
 end Union;
 
@@ -65,7 +67,7 @@ begin
 
     registro_instrucciones: PC 
     port map(clk => clk,
-             PC_in => cnt_out_reg,
+             PC_in => NuevaInstruccion,
              PC_out => PC_out_reg);
              
     mem_instrucciones: MemoriaDeInstrucciones
@@ -75,7 +77,7 @@ begin
     sumadorInst: sumador 
     port map(entradaPC => PC_out_reg,
              reset => reset,
-             cnt_out => cnt_out_reg);
+             cnt_out => SumaInstruccion);
              
                 
 
