@@ -43,25 +43,35 @@ architecture Behavioral of Union1y2 is
     component Union
         Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
+           NuevaInstruccion : in STD_LOGIC_VECTOR (4 downto 0);
+           SumaInstruccion : out STD_LOGIC_VECTOR (4 downto 0);
            instruccion : out STD_LOGIC_VECTOR (31 downto 0));
     end component;
     
     component Union2
         Port ( clk : in STD_LOGIC;
-               instruccion : in STD_LOGIC_VECTOR (31 downto 0));
+           SumaInstruccion : in STD_LOGIC_VECTOR (4 downto 0);
+           nuevaInstruccion : out STD_LOGIC_VECTOR (4 downto 0);
+           instruccion : in STD_LOGIC_VECTOR (31 downto 0));
     end component;
     
     signal instruccion_interna: STD_LOGIC_VECTOR (31 downto 0);
+    signal instruccion_mux: STD_LOGIC_VECTOR (4 downto 0);
+    signal instruccionDeSumador: STD_LOGIC_VECTOR (4 downto 0);
 
 begin
 
     camino_1: Union
         Port map( clk => clk,
                   reset => reset,
+                  NuevaInstruccion => instruccion_mux,
+                  SumaInstruccion => instruccionDeSumador,
                   instruccion => instruccion_interna);
                   
     camino_2: Union2
         Port map( clk => clk,
+                  NuevaInstruccion => instruccion_mux,
+                  SumaInstruccion => instruccionDeSumador,
                   instruccion => instruccion_interna);
 
 end Behavioral;

@@ -38,6 +38,7 @@ entity MDE is
            RegWrite : out STD_LOGIC;
            MemRead : out STD_LOGIC;
            MemWrite : out STD_LOGIC;
+           branch: out std_logic;
            op : in STD_LOGIC_VECTOR (5 downto 0);
            Aluop : out STD_LOGIC_VECTOR (1 downto 0));
 end MDE;
@@ -62,6 +63,7 @@ begin
 			    RegWrite <= '1';
 			    MemRead <= '0';
 			    MemWrite <= '0';
+			    branch <= '0';
 			    Aluop <= "11";
 
 	       when "100011" => -- Instruccion tipo I - lw
@@ -69,7 +71,7 @@ begin
 			    RegDst <= '0';
 			    ALUSrc <= '1';
 			    MemtoReg <= '1';
-			    
+			    branch <= '0';
 			    MemRead <= '1';
 			    MemWrite <= '0';
 			    Aluop <= "00";
@@ -86,9 +88,10 @@ begin
 			    RegWrite <= '0';
 			    MemRead <= '0';
 			    MemWrite <= '1';
+			    branch <= '0';
 			    Aluop <= "00";
 	       
-	       when "000100" => --Instruccion tipo J para beq
+	       when "000100" => --Instruccion tipo I para beq
 			    
 			    RegDst <= '1';
 			    ALUSrc <= '0';
@@ -96,6 +99,7 @@ begin
 			    RegWrite <= '0';
 			    MemRead <= '0';
 			    MemWrite <= '0';
+			    branch <= '1';
 			    Aluop <= "01";
 		   when "111111" =>
 			    
@@ -105,6 +109,7 @@ begin
 			    RegWrite <= '0';
 			    MemRead <= '0';
 			    MemWrite <= '0';
+			    branch <= '0';
 			    Aluop <= "01";
 		   when others =>
 			    
@@ -114,6 +119,7 @@ begin
 			    RegWrite <= '0';
 			    MemRead <= '0';
 			    MemWrite <= '0';
+			    branch <= '0';
 			    Aluop <= "01";
 	   end case;
 	end process;
