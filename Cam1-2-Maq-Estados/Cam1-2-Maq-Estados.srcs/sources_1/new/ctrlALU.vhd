@@ -18,8 +18,8 @@ begin
                op <= "000";
             when "01" => -- beq
                 op <= "010";
-            when "10" => -- 
-                op <= "111";
+            when "10" => -- bne
+                op <= "011";
             when "11" => -- Para las tipo R
                 case funcion is     -- Tadas estas son suposiciones, depende de como este en la memoria de instrucciones
                     when "000001" => -- Para la suma
