@@ -101,6 +101,16 @@ begin
 			    MemWrite <= '0';
 			    branch <= '1';
 			    Aluop <= "01";
+		   when "000101" => --Instruccion tipo I para bne
+			    
+			    RegDst <= '1';
+			    ALUSrc <= '0';
+			    MemtoReg <= '0';
+			    RegWrite <= '0';
+			    MemRead <= '0';
+			    MemWrite <= '0';
+			    branch <= '1';
+			    Aluop <= "10";
 		   when "111111" =>
 			    
 			    RegDst <= '1';

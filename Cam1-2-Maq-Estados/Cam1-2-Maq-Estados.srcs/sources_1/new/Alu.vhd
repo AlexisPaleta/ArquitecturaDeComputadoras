@@ -73,7 +73,7 @@ BEGIN
 		WHEN "010"=>
 			Resultado_signed := (A_signed and B_signed);  
             SALIDA <= std_logic_vector(Resultado_signed);
-            if (A_signed = B_signed) then
+            if (A_signed = B_signed) then --Esto sirve para cuando es la instruccion beq
                 zero <= '1';
             else 
                 zero <= '0';
@@ -82,6 +82,11 @@ BEGIN
 		WHEN "011" =>
 			Resultado_signed := (A_signed or B_signed);   
          SALIDA <= std_logic_vector(Resultado_signed);
+         if (A_signed = B_signed) then --Esto sirve para cuando es la instruccion bne
+                zero <= '0';
+            else 
+                zero <= '1';
+            end if;
         WHEN "100" =>
             Resultado_signed := (not(A_signed)); 
             SALIDA <= std_logic_vector(Resultado_signed);
