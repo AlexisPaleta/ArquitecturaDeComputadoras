@@ -95,6 +95,10 @@ BEGIN
             Resultado_signed := not(A_signed) + 1; 
             SALIDA <= std_logic_vector(Resultado_signed);
             zero <= '0';
+        WHEN "110" => -- Para la instruccion tipo J
+            Resultado_signed := not(A_signed) + 1; 
+            SALIDA <= std_logic_vector(Resultado_signed);
+            zero <= '1';
 		WHEN OTHERS =>
 			-- Caso por defecto
          SALIDA <= (others => '0'); 

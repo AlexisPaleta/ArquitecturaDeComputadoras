@@ -30,6 +30,7 @@ Compiling architecture behavioral of entity xil_defaultlib.MemoriaDeDatos [memor
 Compiling architecture behavioral of entity xil_defaultlib.multiplexor32bitsMemtoReg [multiplexor32bitsmemtoreg_defaul...]
 Compiling architecture behavioral of entity xil_defaultlib.RegistroALU [registroalu_default]
 Compiling architecture behavioral of entity xil_defaultlib.multiplexorSaltosPCSrc [multiplexorsaltospcsrc_default]
+Compiling architecture behavioral of entity xil_defaultlib.muxJump [muxjump_default]
 Compiling architecture behavioral of entity xil_defaultlib.Union2 [union2_default]
 Compiling architecture behavioral of entity xil_defaultlib.union1y2
 Built simulation snapshot Union1y2_behav

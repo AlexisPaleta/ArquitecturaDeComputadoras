@@ -39,8 +39,9 @@ entity MDE is
            MemRead : out STD_LOGIC;
            MemWrite : out STD_LOGIC;
            branch: out std_logic;
+           jump: out std_logic;
            op : in STD_LOGIC_VECTOR (5 downto 0);
-           Aluop : out STD_LOGIC_VECTOR (1 downto 0));
+           Aluop : out STD_LOGIC_VECTOR (2 downto 0));
 end MDE;
 
 architecture Behavioral of MDE is
@@ -64,7 +65,8 @@ begin
 			    MemRead <= '0';
 			    MemWrite <= '0';
 			    branch <= '0';
-			    Aluop <= "11";
+			    jump <= '0';
+			    Aluop <= "011";
 
 	       when "100011" => -- Instruccion tipo I - lw
 			    
@@ -74,7 +76,8 @@ begin
 			    branch <= '0';
 			    MemRead <= '1';
 			    MemWrite <= '0';
-			    Aluop <= "00";
+			    jump <= '0';
+			    Aluop <= "000";
 			    
 			    RegWrite <= '1';
 			    
@@ -89,7 +92,8 @@ begin
 			    MemRead <= '0';
 			    MemWrite <= '1';
 			    branch <= '0';
-			    Aluop <= "00";
+			    jump <= '0';
+			    Aluop <= "000";
 	       
 	       when "000100" => --Instruccion tipo I para beq
 			    
@@ -100,7 +104,8 @@ begin
 			    MemRead <= '0';
 			    MemWrite <= '0';
 			    branch <= '1';
-			    Aluop <= "01";
+			    jump <= '1';
+			    Aluop <= "001";
 		   when "000101" => --Instruccion tipo I para bne
 			    
 			    RegDst <= '1';
@@ -110,8 +115,9 @@ begin
 			    MemRead <= '0';
 			    MemWrite <= '0';
 			    branch <= '1';
-			    Aluop <= "10";
-		   when "111111" =>
+			    jump <= '1';
+			    Aluop <= "010";
+		   when "111111" => -- Instruccion J de salto incondicional
 			    
 			    RegDst <= '1';
 			    ALUSrc <= '0';
@@ -119,8 +125,9 @@ begin
 			    RegWrite <= '0';
 			    MemRead <= '0';
 			    MemWrite <= '0';
-			    branch <= '0';
-			    Aluop <= "01";
+			    branch <= '1';
+			    jump <= '1';
+			    Aluop <= "110";
 		   when others =>
 			    
 			    RegDst <= '0';
@@ -130,7 +137,8 @@ begin
 			    MemRead <= '0';
 			    MemWrite <= '0';
 			    branch <= '0';
-			    Aluop <= "01";
+			    jump <= '0';
+			    Aluop <= "111";
 	   end case;
 	end process;
 
