@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Union2.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'Union2'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MemoriaDeInstrucciones.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'MemoriaDeInstrucciones'

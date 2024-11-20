@@ -37,7 +37,7 @@ begin
                     when others =>
                         op <= "111";
                 end case;
-            when "100" => -- Instruccion J
+            when "110" => -- Instruccion J
                op <= "110";
             when others =>
                 op <= "111";

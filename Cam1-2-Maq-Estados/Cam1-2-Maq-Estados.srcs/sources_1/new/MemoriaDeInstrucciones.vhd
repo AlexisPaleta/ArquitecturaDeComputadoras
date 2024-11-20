@@ -42,7 +42,7 @@ architecture Behavioral of MemoriaDeInstrucciones is
 type rom_type is array (0 to 31) of STD_LOGIC_VECTOR(31 downto 0); --para las 9 instrucciones
 constant rom_data : rom_type := (
 				"00000000011000100000100000000001", -- suma -- 0 -- El resultado es 7
-				"00000000011000100000100000000010", -- resta -- 1 -- El resultado es 1
+				"00000000011000100000100000000010", -- resta -- 1 -- El resultado es 1   00000000011000100000100000000010
 				"00000000011000100000100000000011", -- AND -- 2 -- El resultado es 0
 				"00000000011000100000100000000100", -- OR -- 3 - El resultado es 7
 				"00000000011000100000100000000101", -- NOT -- 4 
