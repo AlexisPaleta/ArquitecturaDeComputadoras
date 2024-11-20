@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity Union2 is
     Port ( clk : in STD_LOGIC;
-           SumaInstruccion : in STD_LOGIC_VECTOR (4 downto 0);
+           SumaInstruccion : in STD_LOGIC_VECTOR (4 downto 0); -- Instruccion siguiente de PC
            nuevaInstruccion : out STD_LOGIC_VECTOR (4 downto 0);
            instruccion : in STD_LOGIC_VECTOR (31 downto 0));
 end Union2;
@@ -63,7 +63,7 @@ architecture Behavioral of Union2 is
     end component;
     
     component ctrlAlu
-         Port ( ALUop : in STD_LOGIC_VECTOR (1 downto 0);
+         Port ( ALUop : in STD_LOGIC_VECTOR (2 downto 0);
            funcion : in STD_LOGIC_VECTOR (5 downto 0);
            operacion : out STD_LOGIC_VECTOR (2 downto 0));
     end component;
@@ -90,8 +90,9 @@ architecture Behavioral of Union2 is
            MemRead : out STD_LOGIC;
            MemWrite : out STD_LOGIC;
            branch: out std_logic;
+           jump: out std_logic;
            op : in STD_LOGIC_VECTOR (5 downto 0);
-           Aluop : out STD_LOGIC_VECTOR (1 downto 0));
+           Aluop : out STD_LOGIC_VECTOR (2 downto 0));
     end component;
     
     component multiplexor5bits
@@ -137,6 +138,13 @@ architecture Behavioral of Union2 is
            salidaPCSrcs : out STD_LOGIC_VECTOR (4 downto 0));
     end component;
     
+    component muxJump
+        Port ( sumaPC : in STD_LOGIC_VECTOR (4 downto 0);
+           inmediato : in STD_LOGIC_VECTOR (4 downto 0);
+           jump : in STD_LOGIC;
+           nuevaInstruccion : out STD_LOGIC_VECTOR (4 downto 0));
+    end component;
+    
     signal cop: std_logic_vector (5 downto  0);
     signal reg1: std_logic_vector (4 downto 0);
     signal reg2: std_logic_vector (4 downto 0);
@@ -148,7 +156,7 @@ architecture Behavioral of Union2 is
     signal valorALU: std_logic_vector (31 downto 0);
     signal val1: std_logic_vector (31 downto 0);
     signal val2: std_logic_vector (31 downto 0);
-    signal Alu_op: std_logic_vector (1 downto 0);
+    signal Alu_op: std_logic_vector (2 downto 0);
     signal operacion_out: std_logic_vector (2 downto 0);
     
     signal rw: std_logic_vector (4 downto 0);
@@ -159,10 +167,10 @@ architecture Behavioral of Union2 is
     signal DR: std_logic_vector (31 downto 0);
     
     signal ins_reducida: std_logic_vector (4 downto 0);
+    signal salidaPCSrcs: std_logic_vector (4 downto 0); 
     
     
-    
-    signal RegWrite,RegDst,ALUSrc,MemtoReg,MemRead,MemWrite, branch, zero: std_logic;
+    signal RegWrite,RegDst,ALUSrc,MemtoReg,MemRead,MemWrite, branch, jump, zero: std_logic;
 begin
 
    Decodificador: DecodificadorInstrucciones
@@ -185,6 +193,7 @@ begin
              MemWrite => MemWrite,
              op => cop,
              branch => branch,
+             jump => jump,
              Aluop => Alu_op);
     
     rm: ram
@@ -251,8 +260,14 @@ begin
              Inmediato => inmediato(4 downto 0),
              zero => zero,
              PC => SumaInstruccion,
-             salidaPCSrcs => nuevaInstruccion
+             salidaPCSrcs => salidaPCSrcs
                 );
+    
+    MultiplexorJump: muxJump
+    port map(jump => jump,
+             inmediato => salidaPCSrcs,
+             sumaPC => SumaInstruccion,
+             nuevaInstruccion => nuevaInstruccion);
 
     
 end Behavioral;

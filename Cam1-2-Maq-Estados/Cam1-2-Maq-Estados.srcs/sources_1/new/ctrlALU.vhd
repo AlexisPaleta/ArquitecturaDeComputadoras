@@ -4,7 +4,7 @@ use IEEE.std_logic_arith.all;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity ctrlAlu is
-    Port ( ALUop : in STD_LOGIC_VECTOR (1 downto 0);
+    Port ( ALUop : in STD_LOGIC_VECTOR (2 downto 0);
            funcion : in STD_LOGIC_VECTOR (5 downto 0);
            operacion : out STD_LOGIC_VECTOR (2 downto 0));
 end ctrlAlu;
@@ -14,13 +14,13 @@ architecture Behavioral of ctrlAlu is
 begin
     process(ALUop, funcion) begin
         case ALUop is 
-            when "00" => --lw y sw
+            when "000" => --lw y sw
                op <= "000";
-            when "01" => -- beq
+            when "001" => -- beq
                 op <= "010";
-            when "10" => -- bne
+            when "010" => -- bne
                 op <= "011";
-            when "11" => -- Para las tipo R
+            when "011" => -- Para las tipo R
                 case funcion is     -- Tadas estas son suposiciones, depende de como este en la memoria de instrucciones
                     when "000001" => -- Para la suma
                         op <= "000";
@@ -37,6 +37,8 @@ begin
                     when others =>
                         op <= "111";
                 end case;
+            when "110" => -- Instruccion J
+               op <= "110";
             when others =>
                 op <= "111";
        end case;
