@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.runs/synth_1/Union1y2.tcl"
+  variable script "C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.runs/synth_1/un.tcl"
   variable category "vivado_synth"
 }
 
@@ -62,27 +62,30 @@ create_project -in_memory -part xc7a100tcsg324-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.cache/wt} [current_project]
-set_property parent.project_path {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.xpr} [current_project]
+set_property webtalk.parent_dir C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.cache/wt [current_project]
+set_property parent.project_path C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property ip_output_repo {c:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.cache/ip} [current_project]
+set_property ip_output_repo c:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Alu.vhd}
-  {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/DecodificadorInstrucciones.vhd}
-  {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MDE.vhd}
-  {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MemoriaDeInstrucciones.vhd}
-  {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/PC.vhd}
-  {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/RegistroALU.vhd}
-  {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Union.vhd}
-  {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Union2.vhd}
-  {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/ctrlALU.vhd}
-  {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/ram.vhd}
-  {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/sumador.vhd}
-  {C:/Arquitect de Computadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Union1y2.vhd}
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Alu.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/DecodificadorInstrucciones.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/EXMEM.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/ExtensionSigno.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/IDEX.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/IFID.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MDE.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MEMWB.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MemoriaDeDatos.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MemoriaDeInstrucciones.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/PC.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Union.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/ram.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/sumador.vhd
+  C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -94,10 +97,12 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/utils_1/imports/synth_1/Union1y2.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top Union1y2 -part xc7a100tcsg324-1
+synth_design -top un -part xc7a100tcsg324-1
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"
@@ -107,10 +112,10 @@ if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
 OPTRACE "write_checkpoint" START { CHECKPOINT }
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef Union1y2.dcp
+write_checkpoint -force -noxdef un.dcp
 OPTRACE "write_checkpoint" END { }
 OPTRACE "synth reports" START { REPORT }
-generate_parallel_reports -reports { "report_utilization -file Union1y2_utilization_synth.rpt -pb Union1y2_utilization_synth.pb"  } 
+generate_parallel_reports -reports { "report_utilization -file un_utilization_synth.rpt -pb un_utilization_synth.pb"  } 
 OPTRACE "synth reports" END { }
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]

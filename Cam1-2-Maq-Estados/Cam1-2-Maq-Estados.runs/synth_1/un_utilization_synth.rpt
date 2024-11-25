@@ -1,10 +1,10 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
-| Date         : Thu Nov  7 10:19:00 2024
-| Host         : AlexisPaletaHP running 64-bit major release  (build 9200)
-| Command      : report_utilization -file Union1y2_utilization_synth.rpt -pb Union1y2_utilization_synth.pb
-| Design       : Union1y2
+| Date         : Sun Nov 24 23:58:04 2024
+| Host         : DESKTOP-8SJG43O running 64-bit major release  (build 9200)
+| Command      : report_utilization -file un_utilization_synth.rpt -pb un_utilization_synth.pb
+| Design       : un
 | Device       : xc7a100tcsg324-1
 | Speed File   : -1
 | Design State : Synthesized
@@ -93,7 +93,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |    0 |     0 |          0 |       210 |  0.00 |
+| Bonded IOB                  |   32 |     0 |          0 |       210 | 15.24 |
 | Bonded IPADs                |    0 |     0 |          0 |         2 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         6 |  0.00 |
 | PHASER_REF                  |    0 |     0 |          0 |         6 |  0.00 |
@@ -148,6 +148,8 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
++----------+------+---------------------+
+| OBUFT    |   32 |                  IO |
 +----------+------+---------------------+
 
 

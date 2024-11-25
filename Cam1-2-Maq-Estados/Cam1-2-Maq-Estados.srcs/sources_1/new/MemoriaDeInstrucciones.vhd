@@ -41,10 +41,10 @@ end MemoriaDeInstrucciones;
 architecture Behavioral of MemoriaDeInstrucciones is
 type rom_type is array (0 to 31) of STD_LOGIC_VECTOR(31 downto 0); --para las 9 instrucciones
 constant rom_data : rom_type := (
-				"00000000011000100000100000000001",
-				"00000000011000100000100000000010",
-				"00000000011000100000100000000011",
-				"00000000011000100000100000000100",
+				"10001100000010100000000000000000", --se guarda en la pos. 10 de la RAM el dato de la pos. 0 de la MEM de datos
+				"10001100000010100000000000000100", --se guarda en la pos. 10 de la RAM el dato de la pos. 1 de la MEM de datos
+				"10001100000010100000000000001000", --se guarda en la pos. 10 de la RAM el dato de la pos. 2 de la MEM de datos
+				"10001100000010100000000000001100", --hasta aqui nuevas lw --se guarda en la pos. 10 de la RAM el dato de la pos. 3 de la MEM de datos
 				"00000000011000100000100000000101",
 				"00000000011000100000100000000110", -- Hasta aqui son las 6 instrucciones tipo R
 				"10101100000001000000000000000000", -- sw

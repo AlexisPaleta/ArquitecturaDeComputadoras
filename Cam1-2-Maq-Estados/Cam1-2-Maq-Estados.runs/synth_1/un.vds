@@ -1,0 +1,323 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Sun Nov 24 23:57:23 2024
+# Process ID: 1048
+# Current directory: C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.runs/synth_1
+# Command line: vivado.exe -log un.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source un.tcl
+# Log file: C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.runs/synth_1/un.vds
+# Journal file: C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.runs/synth_1\vivado.jou
+# Running On        :DESKTOP-8SJG43O
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :19045
+# Processor Detail  :AMD Ryzen 7 2700 Eight-Core Processor          
+# CPU Frequency     :3194 MHz
+# CPU Physical cores:8
+# CPU Logical cores :16
+# Host memory       :17110 MB
+# Swap memory       :12348 MB
+# Total Virtual     :29458 MB
+# Available Virtual :6316 MB
+#-----------------------------------------------------------
+source un.tcl -notrace
+create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 513.133 ; gain = 201.836
+Command: read_checkpoint -auto_incremental -incremental C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/utils_1/imports/synth_1/Union1y2.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/utils_1/imports/synth_1/Union1y2.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top un -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 32592
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 972.535 ; gain = 448.309
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'un' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:40]
+INFO: [Synth 8-3491] module 'Alu' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Alu.vhd:35' bound to instance 'ALU1' of component 'Alu' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:189]
+INFO: [Synth 8-638] synthesizing module 'Alu' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Alu.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'Alu' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Alu.vhd:42]
+INFO: [Synth 8-3491] module 'Union' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Union.vhd:36' bound to instance 'camino_1' of component 'Union' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:195]
+INFO: [Synth 8-638] synthesizing module 'Union' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Union.vhd:42]
+INFO: [Synth 8-3491] module 'PC' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/PC.vhd:36' bound to instance 'registro_instrucciones' of component 'PC' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Union.vhd:66]
+INFO: [Synth 8-638] synthesizing module 'PC' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/PC.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'PC' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/PC.vhd:42]
+INFO: [Synth 8-3491] module 'MemoriaDeInstrucciones' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MemoriaDeInstrucciones.vhd:36' bound to instance 'mem_instrucciones' of component 'MemoriaDeInstrucciones' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Union.vhd:71]
+INFO: [Synth 8-638] synthesizing module 'MemoriaDeInstrucciones' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MemoriaDeInstrucciones.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'MemoriaDeInstrucciones' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MemoriaDeInstrucciones.vhd:41]
+INFO: [Synth 8-3491] module 'sumador' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/sumador.vhd:36' bound to instance 'sumadorInst' of component 'sumador' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Union.vhd:75]
+INFO: [Synth 8-638] synthesizing module 'sumador' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/sumador.vhd:42]
+WARNING: [Synth 8-614] signal 'temp' is read in the process but is not in the sensitivity list [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/sumador.vhd:47]
+INFO: [Synth 8-256] done synthesizing module 'sumador' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/sumador.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'Union' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/Union.vhd:42]
+INFO: [Synth 8-3491] module 'IFID' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/IFID.vhd:36' bound to instance 'reg' of component 'IFID' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:200]
+INFO: [Synth 8-638] synthesizing module 'IFID' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/IFID.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'IFID' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/IFID.vhd:42]
+INFO: [Synth 8-3491] module 'DecodificadorInstrucciones' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/DecodificadorInstrucciones.vhd:36' bound to instance 'Decodificador' of component 'DecodificadorInstrucciones' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:205]
+INFO: [Synth 8-638] synthesizing module 'DecodificadorInstrucciones' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/DecodificadorInstrucciones.vhd:47]
+INFO: [Synth 8-256] done synthesizing module 'DecodificadorInstrucciones' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/DecodificadorInstrucciones.vhd:47]
+INFO: [Synth 8-3491] module 'MDE' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MDE.vhd:34' bound to instance 'MaquinaDeEstados' of component 'MDE' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:216]
+INFO: [Synth 8-638] synthesizing module 'MDE' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MDE.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'MDE' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MDE.vhd:45]
+INFO: [Synth 8-3491] module 'ram' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/ram.vhd:36' bound to instance 'rm' of component 'ram' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:226]
+INFO: [Synth 8-638] synthesizing module 'ram' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/ram.vhd:47]
+INFO: [Synth 8-256] done synthesizing module 'ram' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/ram.vhd:47]
+INFO: [Synth 8-3491] module 'ExtensionSigno' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/ExtensionSigno.vhd:35' bound to instance 'ExtensionSig' of component 'ExtensionSigno' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:236]
+INFO: [Synth 8-638] synthesizing module 'ExtensionSigno' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/ExtensionSigno.vhd:40]
+INFO: [Synth 8-256] done synthesizing module 'ExtensionSigno' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/ExtensionSigno.vhd:40]
+INFO: [Synth 8-3491] module 'IDEX' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/IDEX.vhd:36' bound to instance 'registro2IDEX' of component 'IDEX' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:240]
+INFO: [Synth 8-638] synthesizing module 'IDEX' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/IDEX.vhd:52]
+INFO: [Synth 8-256] done synthesizing module 'IDEX' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/IDEX.vhd:52]
+INFO: [Synth 8-3491] module 'EXMEM' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/EXMEM.vhd:36' bound to instance 'registroEXMEM' of component 'EXMEM' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:256]
+INFO: [Synth 8-638] synthesizing module 'EXMEM' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/EXMEM.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'EXMEM' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/EXMEM.vhd:48]
+INFO: [Synth 8-3491] module 'MemoriaDeDatos' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MemoriaDeDatos.vhd:36' bound to instance 'MemDatos' of component 'MemoriaDeDatos' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:268]
+INFO: [Synth 8-638] synthesizing module 'MemoriaDeDatos' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MemoriaDeDatos.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'MemoriaDeDatos' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MemoriaDeDatos.vhd:45]
+INFO: [Synth 8-3491] module 'MEMWB' declared at 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MEMWB.vhd:36' bound to instance 'registroMEMWB' of component 'MEMWB' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:276]
+INFO: [Synth 8-638] synthesizing module 'MEMWB' [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MEMWB.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'MEMWB' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/MEMWB.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'un' (0#1) [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:40]
+WARNING: [Synth 8-3848] Net salida in module/entity un does not have driver. [C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.srcs/sources_1/new/un.vhd:37]
+WARNING: [Synth 8-7129] Port ADDR[31] in module MemoriaDeDatos is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[31] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[30] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[29] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[28] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[27] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[26] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[25] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[24] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[23] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[22] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[21] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[20] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[19] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[18] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[17] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[16] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[15] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[14] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[13] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[12] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[11] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[10] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[9] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[8] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[7] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[6] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[5] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[4] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[3] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[2] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[1] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[0] in module un is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1083.629 ; gain = 559.402
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1083.629 ; gain = 559.402
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1083.629 ; gain = 559.402
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1083.629 ; gain = 559.402
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 2     
+	   3 Input   32 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
+	   2 Input    2 Bit       Adders := 3     
++---Registers : 
+	               32 Bit    Registers := 5     
+	                5 Bit    Registers := 4     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 5     
++---RAMs : 
+	             1024 Bit	(32 X 32 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 2     
+	   6 Input    2 Bit        Muxes := 1     
+	   6 Input    1 Bit        Muxes := 5     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+INFO: [Device 21-9227] Part: xc7a100tcsg324-1 does not have CEAM library.
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port salida[31] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[30] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[29] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[28] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[27] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[26] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[25] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[24] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[23] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[22] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[21] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[20] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[19] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[18] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[17] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[16] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[15] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[14] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[13] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[12] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[11] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[10] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[9] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[8] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[7] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[6] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[5] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[4] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[3] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[2] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[1] in module un is either unconnected or has no load
+WARNING: [Synth 8-7129] Port salida[0] in module un is either unconnected or has no load
+WARNING: [Synth 8-3332] Sequential element (rm/valor1) is unused and will be removed from module un.
+WARNING: [Synth 8-3332] Sequential element (rm/valor1__0) is unused and will be removed from module un.
+WARNING: [Synth 8-3332] Sequential element (rm/valor1__1) is unused and will be removed from module un.
+WARNING: [Synth 8-3332] Sequential element (rm/valor1__2) is unused and will be removed from module un.
+WARNING: [Synth 8-3332] Sequential element (rm/valor1__3) is unused and will be removed from module un.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1283.977 ; gain = 759.750
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1283.977 ; gain = 759.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1283.977 ; gain = 759.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1283.977 ; gain = 759.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1283.977 ; gain = 759.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1283.977 ; gain = 759.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1283.977 ; gain = 759.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1283.977 ; gain = 759.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1283.977 ; gain = 759.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+------+------+
+|      |Cell  |Count |
++------+------+------+
+|1     |OBUFT |    32|
++------+------+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |    32|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1283.977 ; gain = 759.750
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 73 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1283.977 ; gain = 759.750
+Synthesis Optimization Complete : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1283.977 ; gain = 759.750
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1283.977 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1387.598 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 22c220f9
+INFO: [Common 17-83] Releasing license: Synthesis
+59 Infos, 73 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1387.598 ; gain = 869.695
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1387.598 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/ArquitecturaDeComputadoras/Cam1-2-Maq-Estados/Cam1-2-Maq-Estados.runs/synth_1/un.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file un_utilization_synth.rpt -pb un_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Nov 24 23:58:04 2024...
